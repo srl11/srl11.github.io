@@ -1,14 +1,83 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-    
-<head>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="devCat">
-    <title>Docker安装 - devCat</title>
-    <meta name="author" content="xftony">
-    <body>
-    <h1>test HTML
-     <p>This is a paragraph
- 
-</head>
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- Begin Jekyll SEO tag v2.2.3 -->
+<title>Docker安装示例 | xftony.github.io</title>
+<meta property="og:title" content="Docker安装示例" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="xftony笔记" />
+<meta property="og:description" content="xftony笔记" />
+<link rel="canonical" href="https://xftony.github.io/2017/docker_install.html" />
+<meta property="og:url" content="https://xftony.github.io/2017/docker_install.html" />
+<meta property="og:site_name" content="xftony.github.io" />
+<script type="application/ld+json">
+{"@context":"http://schema.org","@type":"WebPage","headline":"Docker安装示例","description":"xftony笔记","url":"https://xftony.github.io/2017/docker_install.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=6a1a11e6bb186604cc9ddfe5c244def8ec539742">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>xftony.github.io</h1>
+        <p>xftony笔记</p>
+        <p class="view"><a href="https://github.com/xftony">Docker安装示例</a></p>  
+        <p class="view"><a href="https://xftony.github.io/2017/docker_install.html">View My GitHub Profile</a></p>        
+      </header>
+      <section>
+      <h1 id="docker安装示例">Docker安装示例</h1>
+<h3 id="1安装docker">1、安装docker</h3>
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code>sudo apt-get -y install docker.io
+</code></pre>
+</div>
+<h3 id="2创建软链接">2、创建软链接</h3>
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code>sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
+sudo  sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
+</code></pre>
+</div>
+<h3 id="3设置自启动">3、设置自启动</h3>
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code>sudo update-rc.d docker.io defaults
+</code></pre>
+</div>
+<h3 id="4创建并运行-docker容器">4、创建并运行 docker容器</h3>
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code>docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/sdn/simrp:/home/simrp --net=none --name s2 eclipse1.1
+</code></pre>
+</div>
+<h3 id="5启动容器">5、启动容器</h3>
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code>sudo docker start host1
+sudo docker exec -it host1 /bin/bash
+</code></pre>
+</div>
+<h3 id="6建立容器间连接">6、建立容器间连接</h3>
+<p>将容器s1的eth1添加到br1上，并设置其ip为10.0.1.1/24</p>
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code>sudo pipework br1 -i eth1 s1 10.0.1.1/24
+</code></pre>
+</div>
+<h3 id="7阿里云镜像加速">7、阿里云镜像加速docker的安装升级</h3>
+<p>请安装1.6.0以上版本的Docker。 
+可以通过阿里云的镜像仓库下载： mirrors.aliyun.com/help/docker-engine</p>
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code>curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -
+</code></pre>
+</div>
+<p>配置Docker加速器:
+可以使用如下的脚本将mirror的配置添加到docker daemon的启动参数中。</p>
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code>echo "DOCKER_OPTS=<span class="se">\"</span>--registry-mirror=https://pee6w651.mirror.aliyuncs.com<span class="se">\"</span>" | sudo tee -a /etc/default/docker
+sudo service docker restart
+</code></pre>
+</div>
+      </section>
+      <footer>       
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+  </body>
+</html>
