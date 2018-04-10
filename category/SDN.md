@@ -1,6 +1,6 @@
 ---
 layout: category
-title: Markup
+title: SDN
 ---
 
 Another sample category page.

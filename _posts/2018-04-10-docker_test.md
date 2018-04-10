@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Docker安装示例"
+categories:
+  - Docker
+tags:
+  - docker
+  - Virtualization
+---
+
 # Docker安装示例
 ### 1、安装docker
 ```markdown
