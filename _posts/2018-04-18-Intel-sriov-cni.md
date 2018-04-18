@@ -8,10 +8,10 @@ tags:
   - Virtualization
 ---
 
-###sriov-cni简介
+### sriov-cni简介   
 sriov-cni是intel开发的一种容器网络插件（Container Network Interface），它使得容器可以直接使用物理机中扩展出来的VF。其中VF是指支持SRIOV的物理网卡所虚拟出的一个“网卡”或者说虚出来的一个实例，它会以一个独立网卡的形式呈现出来，每一个VF有它自己独享的PCI配置区域，并且可能与其他VF共享着同一个物理资源（公用同一个物理网口）
 
-###sriov-cni代码简介
+### sriov-cni代码简介  
 sriov-cni主要通过调用netlink包将vf修改到容器的namespace下，使得VF可以被容器直接调用。
 根据cni的标准定义两个函数cmdAdd和cmdDel，分别用于VF的添加和删除`skel.PluginMain(cmdAdd, cmdDel)`
 cmdAdd和cmdDel基本是一对反过程，所以这里就只简单介绍一下cmdAdd函数。
@@ -205,7 +205,9 @@ cmdAdd和cmdDel基本是一对反过程，所以这里就只简单介绍一下cm
 		})
 	}
 
-sriov实现了container中调用host VF的功能，本在使用时也发现了一切不足之处（或许是我了解不足导致的误解，如是，请指正），例如：
+
+### sriov修改版介绍
+sriov实现了container中调用host VF的功能，在使用时也发现了一切不足之处（或许是我了解不足导致的误解，如是，请指正），例如：
 >1、sriov-cni在保存dpdk配置的后，若dpdk驱动更新可能失败，但是配置不会被删除;  
 >2、在k8s下使用，其保存dpdk配置的时候，使用的是pod-container-id（k8s会为每个pod创建一个container以提供相应网络服务等），对于container无法识别其被分配到的VF，因为container可以看到所有的包括分配给其他container的VF；(这里它目的可能只是为了保存删除时需要的信息，但是container内存在需要使用其dpdk信息的场景，所以可以修改一下)  
 >3、sriov-cni进保存dpdk模式的配置信息，对于普通的sriov不会进行配置信息的保存；  
