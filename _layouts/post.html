@@ -13,6 +13,9 @@ layout: default
     {% include post-tags.html post=page %}
   </div>
 
-  {% include comments.html %}
+ <!-- {% include comments.html %}--->
   {% include related_posts.html %}
+  {% if {{site.intensedebate_comments}} %}
+      {% include intensedebate-comments.html %}
+  {% endif %}
 </div>

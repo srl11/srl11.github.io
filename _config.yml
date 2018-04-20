@@ -23,7 +23,10 @@ paginate:         5
                    # Or '/blog/page:num' if you want to move your index pages
 
                    
-baidu-analysis:  'ff9943f368cb96a631f6ca5425a9f59f'                
+baidu-analysis:  'ff9943f368cb96a631f6ca5425a9f59f'   
+## enable the intensedebate_comments
+intensedebate_comments:  true     
+            
                    
 plugins:
   - jekyll-feed
