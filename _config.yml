@@ -19,8 +19,12 @@ author:
 
 paginate:         5
 # paginate_path:    '/page:num'
-                    # Or '/blog/page:num' if you want to move your index pages
+ 
+                   # Or '/blog/page:num' if you want to move your index pages
 
+                   
+baidu-analysis：  ff9943f368cb96a631f6ca5425a9f59f                
+                   
 plugins:
   - jekyll-feed
   - jekyll-gist
