@@ -9,7 +9,7 @@ tags:
   - Docker
 ---
 
-##Linux内核支持的namespaces
+### Linux内核支持的namespaces
 
     名称         宏定义            隔离内容
     Cgroup      CLONE_NEWCGROUP   Cgroup root directory (since Linux 4.6)
@@ -20,8 +20,8 @@ tags:
 	User        CLONE_NEWUSER     User and group IDs (started in Linux 2.6.23 and completed in Linux 3.8)
 	UTS         CLONE_NEWUTS      Hostname and NIS domain name (since Linux 2.6.19)
 
-##namespace添加    
-  创建一个命名空间的方法是使用clone()系统调用。其具体函数为`int clone(int(*child_func)(void *), void *child_stack, int flags, void*arg);`。在go语言中，可以通过调用syscall创建新的命名空间。 如下，该段代码为“sh”创建了一个UTS namespace和一个IPC namespace。PS：代码摘自[《自己动手写Docker》](https://book.douban.com/subject/27082348/)  
+### namespace添加    
+创建一个命名空间的方法是使用clone()系统调用。其具体函数为`int clone(int(*child_func)(void *), void *child_stack, int flags, void*arg);`。在go语言中，可以通过调用syscall创建新的命名空间。 如下，该段代码为“sh”创建了一个UTS namespace和一个IPC namespace。PS：代码摘自[《自己动手写Docker》](https://book.douban.com/subject/27082348/)  
 
 	root@xftony:~/test# cat main.go 
 	package main
@@ -42,7 +42,7 @@ tags:
 	    }
 	}
 
-##namespace查看  
+### namespace查看   
        
     //查看进程所属的namespace，以进程18为例： 
     root@xftony:~/test# ll /proc/18/ns    
@@ -57,7 +57,7 @@ tags:
 	lrwxrwxrwx 1 root root 0 Apr 25 21:14 user -> user:[4026531837]   
 	lrwxrwxrwx 1 root root 0 Apr 25 21:14 uts -> uts:[4026531838]
 
-##namespace维持    
+### namespace维持    
 当一个namespace中的所有进程都退出时，该namespace将会被销毁。当然还有其他方法让namespace一直存在，假设我们有一个进程号为1000的进程，以ipc namespace为例：
 
 通过`mount --bind`命令。例如`mount --bind /proc/1000/ns/ipc /other/file`，就算属于这个`ipc namespace`的所有进程都退出了，只要`/other/file`还在，这个`ipc namespace`就一直存在，其他进程就可以利用`/other/file`，通过`setns`函数加入到这个namespace
