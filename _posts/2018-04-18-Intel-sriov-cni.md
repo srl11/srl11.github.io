@@ -2,9 +2,9 @@
 layout: post
 title: "Intel sriov-cni插件简介/修改"
 categories:
-  - k8s
+  - Kubernetes
 tags:
-  - k8s
+  - Kubernetes
   - Virtualization
 ---
 

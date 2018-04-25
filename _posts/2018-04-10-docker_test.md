@@ -4,7 +4,7 @@ title: "Docker安装示例"
 categories:
   - Docker
 tags:
-  - docker
+  - Docker
   - Virtualization
 ---
 
