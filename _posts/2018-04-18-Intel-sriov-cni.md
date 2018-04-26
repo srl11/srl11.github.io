@@ -155,7 +155,7 @@ cmdAdd和cmdDel基本是一对反过程，所以这里就只简单介绍一下cm
 			if err = savedpdkConf(cid, conf.CNIDir, conf); err != nil {
 				return err
 			}
-	        //调用dpdk_tool脚本，更新VF驱动
+	        //调用dpdk_tool脚本，更新VF驱动,划重点
 			return enabledpdkmode(&conf.DPDKConf, infos[0].Name(), true)
 		}
 	
