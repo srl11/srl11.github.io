@@ -9,7 +9,8 @@ tags:
   - Docker
 ---
 
-### Linux内核支持的namespaces
+### Linux内核支持的namespaces   
+[详细介绍](http://man7.org/linux/man-pages/man7/namespaces.7.html)
 
     名称         宏定义            隔离内容
     Cgroup      CLONE_NEWCGROUP   Cgroup root directory (since Linux 4.6)
