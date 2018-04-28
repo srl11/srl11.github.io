@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Linux namespaces"
+title: "Docker技术基础：Linux namespaces"
 categories:
   - Docker
 tags:
@@ -8,6 +8,8 @@ tags:
   - Namespace
   - Docker
 ---
+[github-blog](https://xftony.github.io)    
+[CSDN](https://blog.csdn.net/xftony)  
 
 ### Linux内核支持的namespaces   
 [详细介绍](http://man7.org/linux/man-pages/man7/namespaces.7.html)
@@ -64,3 +66,6 @@ tags:
 通过`mount --bind`命令。例如`mount --bind /proc/1000/ns/ipc /other/file`，就算属于这个`ipc namespace`的所有进程都退出了，只要`/other/file`还在，这个`ipc namespace`就一直存在，其他进程就可以利用`/other/file`，通过`setns`函数加入到这个namespace
 
 在其他namespace的进程中打开`/proc/1000/ns/ipc`文件，并一直持有这个文件描述符不关闭，以后就可以用`setns`函数加入这个namespace。
+
+[github-blog](https://xftony.github.io)    
+[CSDN](https://blog.csdn.net/xftony)  
