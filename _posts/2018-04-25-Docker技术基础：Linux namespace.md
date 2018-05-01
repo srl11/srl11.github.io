@@ -8,8 +8,8 @@ tags:
   - Namespace
   - Docker
 ---
-[github-blog](https://xftony.github.io)    
-[CSDN](https://blog.csdn.net/xftony)  
+[Github-blog](https://xftony.github.io/docker/2018/04/25/Docker%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80-Linux-namespace.html)    
+[CSDN-blog](https://blog.csdn.net/xftony/article/details/80160172)  
 
 ### Linux内核支持的namespaces   
 [详细介绍](http://man7.org/linux/man-pages/man7/namespaces.7.html)
@@ -67,5 +67,5 @@ tags:
 
 在其他namespace的进程中打开`/proc/1000/ns/ipc`文件，并一直持有这个文件描述符不关闭，以后就可以用`setns`函数加入这个namespace。
 
-[github-blog](https://xftony.github.io)    
-[CSDN](https://blog.csdn.net/xftony)  
+[Github-blog](https://xftony.github.io/docker/2018/04/25/Docker%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80-Linux-namespace.html)    
+[CSDN-blog](https://blog.csdn.net/xftony/article/details/80160172)  

@@ -8,7 +8,7 @@ tags:
   - Virtualization
 ---
 [github-blog](https://xftony.github.io)    
-[CSDN](https://blog.csdn.net/xftony)  
+[CSDN-blog](https://blog.csdn.net/xftony)  
 
 ### sriov-cni简介   
 sriov-cni是[hustcat/sriov-cni](https://github.com/hustcat/sriov-cni)开发的一种容器网络插件（Container Network Interface），它使得容器可以直接使用物理机中扩展出来的VF（virtual functions）。Intel在此基础上，为其添加了dpdk功能。本文介绍的sriov-cni的版本为[Intel版](https://github.com/Intel-Corp/sriov-cni)，修改也是基于Intel版本进行的修改。
@@ -227,4 +227,4 @@ sriov实现了container中调用host VF的功能，在使用时也发现了一�
 
 
 [github-blog](https://xftony.github.io)  
-[CSDN](https://blog.csdn.net/xftony)
+[CSDN-blog](https://blog.csdn.net/xftony)
