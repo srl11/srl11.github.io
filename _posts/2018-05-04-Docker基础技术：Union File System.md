@@ -7,7 +7,7 @@ tags:
   - File System
   - Docker
 ---
-[github-blog](https://xftony.github.io)    
+[Github-blog](https://xftony.github.io/docker/2018/05/04/Docker基础技术-Union-File-System.html)     
 [CSDN](https://blog.csdn.net/xftony)   
 
 ### Docker images and layers
@@ -15,10 +15,10 @@ tags:
 Docker的image是由一组layers组合起来得到的，每一层layer对应的是Dockerfile中的一条指令。这些layers中，一层layer为R/W layer，即 container layer，其他layers均为read-only layer（分析见[Union File System](#UFS)）。    
 PS： Dockerfile中只允许最后一个CMD或ENTRYPOINT生效，也与之对应，Dockerfile中其他命令生成的layer为Read-only的，CMD或ENTRYPOINT生成的layer是R/W的。  
 以ubuntu:15.04的image为例，其image结构示意图如下（截自docker docs）：  
-  ![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/20180502-Docker基础技术：Union File System-1.png)     
+  ![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/20180504-Docker基础技术：Union File System-1.png)     
 
 当创建多台容器的时候，我们所有的写操作都是发生在R/W层，其FS结构示意图如下：
-  ![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/20180502-Docker基础技术：Union File System-2.png)   
+  ![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/20180504-Docker基础技术：Union File System-2.png)   
 
 
 ### Union File System
@@ -47,7 +47,7 @@ Docker的存储驱动的实现是基于
 ### AUFS  
 AUFS，全称Advanced Multi-Layered Unification Filesystem。AUFS重写了早期的U nionFS 1.x，提升了其可靠性和性能，是早期Docker版本的默认的存储驱动。（Docker-CE目前默认使用OverlayFS）。  
 
-![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/20180502-Docker基础技术：Union File System-3.png)   
+![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/20180504-Docker基础技术：Union File System-3.png)   
 
 Ubuntu/Debian（Stretch之前的版本）上的Docker-CE可以通过配置`DOCKER_OPTS="-s=aufs"`进行修改，同时内核中需要加载AUFS module，image的增删变动都会发生在`/var/lib/docker/aufs`目录下。  
 
@@ -124,16 +124,17 @@ OverlayFS中使用了两个目录，把一个目录置放于另一个之上，�
 	    ├── ENKIS3HQUBTP5TXRBSEBREVFSB -> ../a6219957a4e46e40b78cf5d20624e0b42f51a12f83dd2b4c683e33a5932d634b/diff
 	    ├── EOAX5LBZ75SSQHO6VOVXVMEP6E -> ../dbafc7976ac255df27aea16935b901745c1cf66487f142ec01b047998f139122/diff
 	    ├── OAFOUB3QEZRY42E4ERJHP6NVJG -> ../8fa01a5986e8a08c5c6af11c88015013841b89496a8d6cb65d6186dad03a12e6/diff
-	    └── XR6454BGFPITLDXL4D7MPQEUHZ -> ../bce6bd75c4c2900eb51d3b103073a158ea17be3708461714f19eddb9e2bc9713/diff
-其中
+	    └── XR6454BGFPITLDXL4D7MPQEUHZ -> ../bce6bd75c4c2900eb51d3b103073a158ea17be3708461714f19eddb9e2bc9713/diff  
+
+其中  
 >`l`:目录下存储了多个软链接，使用短名指向其他各层；  
->`其他一级目录`：例如8fa01a5986e8a08c5等目录，为lowerdir，是一层层的镜像；  
+>`其他一级目录`：例如8fa01a5986e8a08c5等目录，为lowerdir，是一层层的镜像；   
 >`diff`：包含该层镜像的具体内容，即`upperdir`和`lowerdir`，此处都为`lowerdir`；    
 >`link`：记录该目录对应的短名；  
->`lower`：记录该目录的所有lowerdir，每一级间使用`:` 分隔；  
->`work`：该目录是OverlayFS功能需要的，会被如copy_up之类的操作使用；  
+>`lower`：记录该目录的所有lowerdir，每一级间使用`:` 分隔；   
+>`work`：该目录是OverlayFS功能需要的，会被如copy_up之类的操作使用；   
 
-现在，我们使用该镜像创建一个container。创建成功后，会发overlay2目录下多了两个目录，`l`目录下也多了两个连接（我已经手动去掉了原有的目录结构）：  
+现在，我们使用该镜像创建一个container。创建成功后，会发overlay2目录下多了两个目录，`l`目录下也多了两个连接（我已经手动去掉了原有的目录结构）：    
 
 	root@xftony:/var/lib/docker/overlay2# tree -L 2
 	.
@@ -154,12 +155,13 @@ OverlayFS中使用了两个目录，把一个目录置放于另一个之上，�
 	    ├── CAAAXEW6Q6BCCOG5XVXVVJN2PY -> ../671ffb27cc5e04f7f7a6c2e61b82c74514df0ff57a2fb47fd45bb1902aa86688-init/diff
 	    ├── 
         ...
-其中
->`XXX-init`：这是顶层的`lowerdir`的父目录,因此也是只读的，它的目的是为了初始化container配置信息，譬如hostname等信息,`XXX`对应的是`upperdir`的父目录名；      
->`XXX`：这是`upperdir`的父目录，可读写，container的写操作都会发生在该层；   
->`merged`：该目录就是container的mount point，这就是暴露的`lowerdir`和`upperdir`的统一视图。任何对容器的改变也影响这个目录。
 
-此时可以通过mount查看overlay统一试图中的mount状态：    
+其中   
+>`XXX-init`：这是顶层的`lowerdir`的父目录,因此也是只读的，它的目的是为了初始化container配置信息，譬如hostname等信息,`XXX`对应的是`upperdir`的父目录名；        
+>`XXX`：这是`upperdir`的父目录，可读写，container的写操作都会发生在该层；    
+>`merged`：该目录就是container的mount point，这就是暴露的`lowerdir`和`upperdir`的统一视图。任何对容器的改变也影响这个目录。  
+
+此时可以通过mount查看overlay统一试图中的mount状态：      
     root@xftony:/var/lib/docker/overlay2# mount |grep overlay
 	overlay on /var/lib/docker/overlay2/671ffb27cc5e04f7f7a6c2e61b82c74514df0ff57a2fb47fd45bb1902aa86688/merged type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/CAAAXEW6Q6BCCOG5XVXVVJN2PY:/var/lib/docker/overlay2/l/CMR5LVSFJRXC7QA2ZF5MWLQB5Z:/var/lib/docker/overlay2/l/ENKIS3HQUBTP5TXRBSEBREVFSB:/var/lib/docker/overlay2/l/XR6454BGFPITLDXL4D7MPQEUHZ:/var/lib/docker/overlay2/l/EOAX5LBZ75SSQHO6VOVXVMEP6E:/var/lib/docker/overlay2/l/OAFOUB3QEZRY42E4ERJHP6NVJG,upperdir=/var/lib/docker/overlay2/671ffb27cc5e04f7f7a6c2e61b82c74514df0ff57a2fb47fd45bb1902aa86688/diff,workdir=/var/lib/docker/overlay2/671ffb27cc5e04f7f7a6c2e61b82c74514df0ff57a2fb47fd45bb1902aa86688/work)
 
@@ -169,16 +171,16 @@ OverlayFS中使用了两个目录，把一个目录置放于另一个之上，�
 
 
 ##### OverlayFS优点    
-1、可以在多个运行的container中高效的共享image，可以实现容器的快速启动，并减少磁盘占用量；
-2、支持页缓存共享，可以高效的是使用page cache；
-3、相较于AUFS等，性能更好。
+1、可以在多个运行的container中高效的共享image，可以实现容器的快速启动，并减少磁盘占用量；  
+2、支持页缓存共享，可以高效的是使用page cache；  
+3、相较于AUFS等，性能更好。  
 
 ##### OverlayFS缺点    
-1、只支持POSIX标准的一个子集，与其他文件系统的存在不兼容性，如对open和rename操作的支持；
+1、只支持POSIX标准的一个子集，与其他文件系统的存在不兼容性，如对open和rename操作的支持；  
 
 ### BtrFS， DeviceMapper，ZFS，VFS
 待补。。。
 
 
-[github-blog](https://xftony.github.io)  
+[Github-blog](https://xftony.github.io/docker/2018/05/04/Docker基础技术-Union-File-System.html)   
 [CSDN](https://blog.csdn.net/xftony)
