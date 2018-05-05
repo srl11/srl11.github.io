@@ -47,7 +47,7 @@ Docker的存储驱动的实现是基于
 ### AUFS  
 AUFS，全称Advanced Multi-Layered Unification Filesystem。AUFS重写了早期的U nionFS 1.x，提升了其可靠性和性能，是早期Docker版本的默认的存储驱动。（Docker-CE目前默认使用OverlayFS）。  
 
-![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/20180504-Docker基础技术：Union File System-3.png)   
+![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/20180504-Docker基础技术：Union File System-3.jpg)   
 
 Ubuntu/Debian（Stretch之前的版本）上的Docker-CE可以通过配置`DOCKER_OPTS="-s=aufs"`进行修改，同时内核中需要加载AUFS module，image的增删变动都会发生在`/var/lib/docker/aufs`目录下。  
 
@@ -161,9 +161,18 @@ OverlayFS中使用了两个目录，把一个目录置放于另一个之上，�
 >`XXX`：这是`upperdir`的父目录，可读写，container的写操作都会发生在该层；    
 >`merged`：该目录就是container的mount point，这就是暴露的`lowerdir`和`upperdir`的统一视图。任何对容器的改变也影响这个目录。  
 
-此时可以通过mount查看overlay统一试图中的mount状态：      
+此时可以通过mount查看overlay统一试图中的mount状态：   
+   
     root@xftony:/var/lib/docker/overlay2# mount |grep overlay
-	overlay on /var/lib/docker/overlay2/671ffb27cc5e04f7f7a6c2e61b82c74514df0ff57a2fb47fd45bb1902aa86688/merged type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/CAAAXEW6Q6BCCOG5XVXVVJN2PY:/var/lib/docker/overlay2/l/CMR5LVSFJRXC7QA2ZF5MWLQB5Z:/var/lib/docker/overlay2/l/ENKIS3HQUBTP5TXRBSEBREVFSB:/var/lib/docker/overlay2/l/XR6454BGFPITLDXL4D7MPQEUHZ:/var/lib/docker/overlay2/l/EOAX5LBZ75SSQHO6VOVXVMEP6E:/var/lib/docker/overlay2/l/OAFOUB3QEZRY42E4ERJHP6NVJG,upperdir=/var/lib/docker/overlay2/671ffb27cc5e04f7f7a6c2e61b82c74514df0ff57a2fb47fd45bb1902aa86688/diff,workdir=/var/lib/docker/overlay2/671ffb27cc5e04f7f7a6c2e61b82c74514df0ff57a2fb47fd45bb1902aa86688/work)
+	overlay on /var/lib/docker/overlay2/671ffb27cc5e04f7f7a6c2e61b82c74514df0ff57a2fb47fd45bb1902aa86688/merged type overlay (rw,relatime,
+	lowerdir=/var/lib/docker/overlay2/l/CAAAXEW6Q6BCCOG5XVXVVJN2PY:
+	/var/lib/docker/overlay2/l/CMR5LVSFJRXC7QA2ZF5MWLQB5Z:
+	/var/lib/docker/overlay2/l/ENKIS3HQUBTP5TXRBSEBREVFSB:
+	/var/lib/docker/overlay2/l/XR6454BGFPITLDXL4D7MPQEUHZ:
+	/var/lib/docker/overlay2/l/EOAX5LBZ75SSQHO6VOVXVMEP6E:
+	/var/lib/docker/overlay2/l/OAFOUB3QEZRY42E4ERJHP6NVJG,
+	upperdir=/var/lib/docker/overlay2/671ffb27cc5e04f7f7a6c2e61b82c74514df0ff57a2fb47fd45bb1902aa86688/diff,
+	workdir=/var/lib/docker/overlay2/671ffb27cc5e04f7f7a6c2e61b82c74514df0ff57a2fb47fd45bb1902aa86688/work)
 
 ##### OverlayFS下读写操作：   
 目前感觉基本与AUFS一致，等后续理解深一点在补。

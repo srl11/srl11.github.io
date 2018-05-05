@@ -5,7 +5,7 @@ highlighter:      rouge
 # Setup
 title:            xftony
 #tagline:          'A Jekyll theme'
-description:      'Note something'
+description:      'WoW'
 url:              https://github.com/xftony/xftony.github.io
 baseurl:          # the optional subpath of your site, e.g. "/blog"
                   # NB: This applies to all pages in your Jekyll site.
