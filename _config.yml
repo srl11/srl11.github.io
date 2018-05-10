@@ -1,44 +1,168 @@
-# Dependencies
-markdown:         kramdown
-highlighter:      rouge
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+#
+# ,--------.      ,--.   ,--. ,--.
+# '--.  .--',---.  \  `.'  /,-'  '-.
+#    |  |  | .-. :  .'    \ '-.  .-'
+#    |  |  \   --. /  .'.  \  |  |
+#    `--'   `----''--'   '--' `--'
 
-# Setup
-title:            xftony
-#tagline:          'A Jekyll theme'
-description:      'WoW'
-url:              https://github.com/xftony/xftony.github.io
-baseurl:          # the optional subpath of your site, e.g. "/blog"
-                  # NB: This applies to all pages in your Jekyll site.
-                  # If you want to move just the blog index pages but keep
-                  # other pages at root, see the paginate_path and
-                  # sidebar_blog_link below.
 
+
+
+## => Site Settings
+##############################
+text_color_theme: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
+url: https://xftony.github.io/ # the base hostname & protocol for your site e.g. https://www.someone.com
+baseurl: /xftony.github.io # does not include hostname
+title: xftony's blog
+description: > # this means to ignore newlines until "Language & timezone"
+  xftony's Blog
+
+
+## => Language and Timezone
+##############################
+lang: # the language of your site, "en" (default, English), "zh"(简体中文), "zh-Hans"(简体中文), "zh-Hant"(繁體中文)
+timezone: Asia/Shanghai # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
+
+
+## => Author and Social
+##############################
 author:
-  name:           'SHI RENLI'
-  url:            https://github.com/xftony
+  name: Tony SHI
+  email: srl11@foxmail.com # your Email address e.g. someone@site.com
+  facebook: # your Facebook username
+  twitter: # your Twitter username
+  github: xftony # your GitHub username
+  linkedin: # your Linkedin username
+  googleplus: # your Google+ username
+  weibo: # your Weibo username
+  douban: # your Douban username
 
-paginate:         5
-# paginate_path:    '/page:num'
- 
-                   # Or '/blog/page:num' if you want to move your index pages
 
-                   
-baidu-analysis:  'ff9943f368cb96a631f6ca5425a9f59f'   
-## enable the intensedebate_comments
-intensedebate_comments:  true     
-            
-                   
+## => GitHub Repository (if the site is hosted by GitHub)
+##############################
+repository: xftony.github.io
+repository_tree: master
+
+
+## => Navigation
+##############################
+paths:
+  base: /
+  home: /
+  all:  /all.html
+  rss:  /feed.xml
+
+nav_lists:
+  - titles:
+      en: About
+      zh: 关于
+      zh-Hans: 关于
+      zh-Hant: 關於
+    url: /about.html
+
+
+## => Post
+##############################
+## excerpt
+excerpt_separator: <!--more-->
+excerpt_type: html # text (default), html
+
+## TOC
+toc:
+  selectors: # "h1,h2,h3" (default)
+
+## Markdown Enhancements
+
+# Mathjax
+mathjax: # false (default), true
+mathjax_autoNumber: # false (default), true
+
+# Mermaid
+mermaid: # false (default), true
+
+# Chart
+chart: # false (default), true
+
+
+## => Paginate
+##############################
+paginate: 8
+paginate_path: /blog/page:num # don't change this unless for special need
+
+
+## => Sources
+##############################
+sources: # bootcdn (default), unpkg
+
+
+## => Comments
+##############################
+## Disqus
+disqus:
+  shortname: # the Disqus shortname for the site
+
+## Gitalk
+# please refer to https://github.com/gitalk/gitalk for more info.
+gitalk:
+  clientID: ed5fadc7a9299dfcd0cd # Github Application Client ID
+  clientSecret: 8973e2bbe81193cc8d9c3b119e01762cb41e0561 # Github Application Client Secret
+  repository: xftony/xftony.github.io # Github repo
+  owner: xftony # Github repo owner
+  admin: # Github repo owner and collaborators, only these guys can initialize github issues, IT IS A LIST.
+    - xftony
+
+
+
+## => Pageview
+##############################
+## Leancloud
+leancloud:
+  app_id: # LeanCloud App id
+  app_key: # LeanCloud App key
+  app_class: # LeanCloud App class
+
+
+## => Analytics
+##############################
+## Google Analytics
+ga_tracking_id: # Google Analytics id for the site
+
+
+## => Build
+##############################
+markdown: kramdown
+highlighter: rouge
+permalink: date
+
+exclude:
+  - CHANGELOG.md
+  - CHECKLIST.md
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README-*.md
+  - README.md
+  - gulpfile.js
+  - jekyll-text-theme.gemspec
+  - package-lock.json
+  - package.json
+  - /docs
+  - /node_modules
+  - /screenshots
+  - /test
+  - /vendor
+
+
+## => Plugins
+##############################
 plugins:
   - jekyll-feed
-  - jekyll-gist
   - jekyll-paginate
-
-# Custom vars
-version:            3.5.3
-sidebar_home_link:  true
-# sidebar_blog_link:  '/blog'   # By default, your home page is your blog
-                                # page. If you change your paginate_path,
-                                # set this to the root of the paginate_path
-                                # to enable a separate blog link.
-github:
-  repo:             https://github.com/xftony/xftony.github.io
+  - jekyll-sitemap
+  - jemoji
