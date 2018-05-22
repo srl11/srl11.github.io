@@ -17,8 +17,8 @@
 ## => Site Settings
 ##############################
 text_color_theme: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
-url: https://xftony.github.io/ # the base hostname & protocol for your site e.g. https://www.someone.com
-baseurl: /xftony.github.io # does not include hostname
+url: https://xftony.github.io/ 
+baseurl: /xftony.github.io
 title: xftony's blog
 description: > # this means to ignore newlines until "Language & timezone"
   xftony's Blog
@@ -34,7 +34,7 @@ timezone: Asia/Shanghai # see https://en.wikipedia.org/wiki/List_of_tz_database_
 ##############################
 author:
   name: Tony SHI
-  email: srl11@foxmail.com # your Email address e.g. someone@site.com
+  email: srl11@foxmail.com 
   facebook: # your Facebook username
   twitter: # your Twitter username
   github: xftony 
@@ -110,10 +110,10 @@ disqus:
 ## Gitalk
 # please refer to https://github.com/gitalk/gitalk for more info.
 gitalk:
-  clientID: ed5fadc7a9299dfcd0cd # Github Application Client ID
-  clientSecret: 8973e2bbe81193cc8d9c3b119e01762cb41e0561 # Github Application Client Secret
-  repository: xftony/xftony.github.io # Github repo
-  owner: xftony # Github repo owner
+  clientID: ed5fadc7a9299dfcd0cd
+  clientSecret: 8973e2bbe81193cc8d9c3b119e01762cb41e0561
+  repository: xftony/xftony.github.io
+  owner: xftony
   admin: # Github repo owner and collaborators, only these guys can initialize github issues, IT IS A LIST.
     - xftony
 

@@ -9,14 +9,12 @@ key: page-about
 ---
 
 Welcome to my blog! :earth_asia: :earth_africa: :earth_americas:
+Here is my [CSDN Blog](https://blog.csdn.net/xftony) 
 
-{% highlight javascript %}
-(() => console.log('hello, world!'))();
-{% endhighlight %}
 
-## Skills
+## Topic
 
-- HTML5, CSS3(SASS), JavaScript(ES2017, Node.js), Bash(Zsh)
-- React, React Native, Vue.js
-- gulp, webpack
-- Adobe Photoshop, Sketch
+- SDN
+- Kubernetes Docker 
+- VPP
+- Action-recognition
