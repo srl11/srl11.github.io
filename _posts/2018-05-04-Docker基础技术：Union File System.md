@@ -16,10 +16,11 @@ tags:
 Docker的image是由一组layers组合起来得到的，每一层layer对应的是Dockerfile中的一条指令。这些layers中，一层layer为R/W layer，即 container layer，其他layers均为read-only layer（分析见[Union File System](#UFS)）。    
 PS： Dockerfile中只允许最后一个CMD或ENTRYPOINT生效，也与之对应，Dockerfile中其他命令生成的layer为Read-only的，CMD或ENTRYPOINT生成的layer是R/W的。  
 以ubuntu:15.04的image为例，其image结构示意图如下（截自docker docs）：  
-  ![image结构示意图](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/2018-05-04-Docker基础技术：Union File System-1.png)     
+
+  ![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-04-Docker基础技术Union-File-System-1.png)      
 
 当创建多台容器的时候，我们所有的写操作都是发生在R/W层，其FS结构示意图如下：
-  ![多容器FS结构示意图](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/2018-05-04-Docker基础技术：Union File System-2.png)   
+  ![多容器FS结构示意图](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-04-Docker基础技术：Union-File-System-2.png)   
 
 
 ### Union File System
@@ -48,7 +49,7 @@ Docker的存储驱动的实现是基于
 ### AUFS  
 AUFS，全称Advanced Multi-Layered Unification Filesystem。AUFS重写了早期的U nionFS 1.x，提升了其可靠性和性能，是早期Docker版本的默认的存储驱动。（Docker-CE目前默认使用OverlayFS）。  
 
-![AUFS结构示意图](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/2018-05-04-Docker基础技术：Union File System-3.jpg)   
+![AUFS结构示意图](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-04-Docker基础技术：Union-File-System-3.jpg)   
 
 Ubuntu/Debian（Stretch之前的版本）上的Docker-CE可以通过配置`DOCKER_OPTS="-s=aufs"`进行修改，同时内核中需要加载AUFS module，image的增删变动都会发生在`/var/lib/docker/aufs`目录下。  
 
