@@ -37,7 +37,7 @@ author:
   email: srl11@foxmail.com # your Email address e.g. someone@site.com
   facebook: # your Facebook username
   twitter: # your Twitter username
-  github: xftony # your GitHub username
+  github: xftony 
   linkedin: # your Linkedin username
   googleplus: # your Google+ username
   weibo: # your Weibo username
@@ -123,9 +123,9 @@ gitalk:
 ##############################
 ## Leancloud
 leancloud:
-  app_id: # LeanCloud App id
-  app_key: # LeanCloud App key
-  app_class: # LeanCloud App class
+  app_id: cFPzImRVjxj3Wh6BPQ4BSy1H-gzGzoHsz
+  app_key: M4tH0spHVyi4PdhoGt6IQn0o
+  app_class: Counter
 
 
 ## => Analytics
@@ -133,6 +133,7 @@ leancloud:
 ## Google Analytics
 ga_tracking_id: # Google Analytics id for the site
 
+baidu-analysis: 'ff9943f368cb96a631f6ca5425a9f59f'
 
 ## => Build
 ##############################

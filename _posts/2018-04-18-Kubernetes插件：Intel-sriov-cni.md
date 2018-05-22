@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Kubernetes插件：Intel sriov-cni插件简介/修改"
+key: 2018-04-18
 categories:
   - Kubernetes
 tags:

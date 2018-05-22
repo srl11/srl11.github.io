@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Docker技术基础：Linux namespaces"
+key: 2018-04-25
 categories:
   - Docker
 tags:
