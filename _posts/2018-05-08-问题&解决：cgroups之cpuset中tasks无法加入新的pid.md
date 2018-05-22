@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "问题&解决：cgroups之cpuset中tasks无法加入新的pid"
-key: 2018-05-08
+key: 2018-05-08-2
 categories:
   - Docker
 tags:
