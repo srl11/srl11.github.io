@@ -112,7 +112,7 @@ disqus:
 gitalk:
   clientID: ed5fadc7a9299dfcd0cd
   clientSecret: 8973e2bbe81193cc8d9c3b119e01762cb41e0561
-  repository: xftony/xftony.github.io
+  repository: xftony.github.io
   owner: xftony
   admin: # Github repo owner and collaborators, only these guys can initialize github issues, IT IS A LIST.
     - xftony
@@ -133,7 +133,7 @@ leancloud:
 ## Google Analytics
 ga_tracking_id: # Google Analytics id for the site
 
-baidu-analysis: 'ff9943f368cb96a631f6ca5425a9f59f'
+baidu-analysis: ff9943f368cb96a631f6ca5425a9f59f
 
 ## => Build
 ##############################
