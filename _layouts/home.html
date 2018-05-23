@@ -20,7 +20,7 @@ titles:
             {%- if _excerpt_type == 'html' -%}
               {{ post.excerpt }}
             {%- else -%}
-              {{ post.excerpt | strip_html | truncate: 350 }}
+              {{ post.excerpt | strip_html | truncate: 10 }}
             {%- endif -%}
           </div>
           {%- assign __path = post.url -%}
