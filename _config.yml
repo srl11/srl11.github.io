@@ -70,7 +70,7 @@ nav_lists:
 ## => Post
 ##############################
 ## excerpt
-excerpt_separator: <!--more-->
+excerpt_separator:  <!--more-->
 excerpt_type: html # text (default), html
 
 ## TOC
@@ -92,7 +92,7 @@ chart: # false (default), true
 
 ## => Paginate
 ##############################
-paginate: 8
+paginate: 5
 paginate_path: /blog/page:num # don't change this unless for special need
 
 

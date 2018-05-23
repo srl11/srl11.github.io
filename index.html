@@ -6,3 +6,8 @@ titles:
   zh-Hans: 博客
   zh-Hant: 博客
 ---
+
+{ % for post in site.posts % }
+ { { post.url } } { { post.title } }
+ { { post.excerpt | strip_html } }
+{ % endfor % }
