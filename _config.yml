@@ -123,6 +123,7 @@ gitalk:
 ##############################
 ## Leancloud
 leancloud:
+  enable: true
   app_id: cFPzImRVjxj3Wh6BPQ4BSy1H-gzGzoHsz
   app_key: M4tH0spHVyi4PdhoGt6IQn0o
   app_class: Counter
