@@ -16,7 +16,7 @@ tags:
 
 ###  问题：DOCKER_OPTS参数不生效
 最近更新了docker版本`Docker version 18.03.1-ce, build 9ee9f40`，更新docker源的时候发现，修改`/etc/default/docker`后，使用`docker info` 查看相关配置，配置无更新，即`DOCKER_OPTS`参数无法生效。
-
+<!--more-->   
 ###  原因    
 在新的版本中，`/etc/default/docker`默认不生效=。=  需要进行手动配置，使其生效。       
 官方说明：  

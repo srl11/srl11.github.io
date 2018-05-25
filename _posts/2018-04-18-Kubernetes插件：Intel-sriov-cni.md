@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kubernetes插件：Intel sriov-cni插件简介/修改"
-key: 2018-04-18
+key: Docker安装示例
 categories:
   - Kubernetes
 tags:
@@ -14,6 +14,7 @@ tags:
 ### sriov-cni简介   
 sriov-cni是[hustcat/sriov-cni](https://github.com/hustcat/sriov-cni)开发的一种容器网络插件（Container Network Interface），它使得容器可以直接使用物理机中扩展出来的VF（virtual functions）。Intel在此基础上，为其添加了dpdk功能。本文介绍的sriov-cni的版本为[Intel版](https://github.com/Intel-Corp/sriov-cni)，修改也是基于Intel版本进行的修改。
 
+<!--more-->
 
 ### sriov-cni代码简介  
 sriov-cni主要通过调用netlink包将vf修改到容器的namespace下，使得VF可以被容器直接调用。其中VF是指支持SRIOV的物理网卡所虚拟出的一个“网卡”或者说虚出来的一个实例，它会以一个独立网卡的形式呈现出来，每一个VF有它自己独享的PCI配置区域，并且可能与其他VF共享着同一个物理资源（公用同一个物理网口）

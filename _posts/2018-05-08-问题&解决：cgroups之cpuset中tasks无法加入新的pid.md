@@ -18,11 +18,11 @@ tags:
 
 	root@xftony:~/test/c0/c1/cputest# echo 4847 > tasks  
      -bash: echo: write error: No space left on device
-
+<!--more-->  
 ### 原因   
 
-在添加tasks之前，`cpuset.cpus`和`cpuset.mems`需要提前进行配置。`cpuset.cpus`中为该组cgroup中可用的cpu_node, 默认情况下，配置了所有的可用cpu。`cpuset.mems`中为该组cgroup中可用的mem_node，默认为空。
-NUMA模式下，处理器被划分成多个“节点”（node），每个节点被分配有的本地存储器空间。 每个节点被分配有的本地存储器空间. 所有节点中的处理器都可以访问全部的系统物理存储器，但是访问本节点内的存储器所需要的时间，比访问某些远程节点内的存储器所花的时间要少得多。  
+在添加tasks之前，`cpuset.cpus`和`cpuset.mems`需要提前进行配置。`cpuset.cpus`中为该组cgroup中可用的cpu_node, 默认情况下，配置了所有的可用cpu。`cpuset.mems`中为该组cgroup中可用的mem_node，默认为空。   
+NUMA模式下，处理器被划分成多个“节点”（node），每个节点被分配有的本地存储器空间。 每个节点被分配有的本地存储器空间. 所有节点中的处理器都可以访问全部的系统物理存储器，但是访问本节点内的存储器所需要的时间，比访问某些远程节点内的存储器所花的时间要少得多。      
 同时内存也被分割成多个区域（BANK，也叫“簇”），依据簇与处理器的“距离”不同, 访问不同簇的代码也会不同. 比如，可能把内存的一个簇指派给每个处理器，或则某个簇和设备卡很近，很适合DMA，那么就指派给该设备。因此当前的多数系统会把内存系统分割成2块区域，一块是专门给CPU去访问，一块是给外围设备板卡的DMA去访问。    
 Linux把物理内存划分为三个层次来管理    
 

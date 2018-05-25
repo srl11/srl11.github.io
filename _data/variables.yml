@@ -12,8 +12,6 @@ default:
   chart: false
   toc:
     selectors: 'h1,h2,h3'
-  excerpt_type: text
-  sources: bootcdn
 
 sources:
   bootcdn:

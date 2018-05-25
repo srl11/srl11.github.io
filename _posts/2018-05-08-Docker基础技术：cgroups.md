@@ -14,7 +14,7 @@ tags:
 ##  cgroups简介
 
 cgroups(control groups)包含三个组件，分别为cgroup、hierarchy，以及subsystem。  
-
+<!--more-->  
 ### cgroup   
 
 cgroup是对进程分组管理的一种机制，cgroups中的资源控制都以cgroup为单位实现。cgroup表示按某种资源控制标准划分而成的任务组，包含一个或多个子系统。一个任务可以加入某个cgroup，也可以从某个cgroup迁移到另外一个cgroup。

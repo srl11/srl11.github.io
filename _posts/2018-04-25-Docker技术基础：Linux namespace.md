@@ -13,6 +13,7 @@ tags:
 [CSDN-blog](https://blog.csdn.net/xftony/article/details/80160172)  
 
 ### Linux内核支持的namespaces   
+<!--more-->
 [详细介绍](http://man7.org/linux/man-pages/man7/namespaces.7.html)
 
     名称         宏定义            隔离内容
