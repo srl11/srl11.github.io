@@ -17,8 +17,8 @@
 ## => Site Settings
 ##############################
 text_color_theme: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
-url: https://xftony.github.io/ 
-baseurl: /xftony.github.io
+url: https://xftony.github.io
+baseurl: /
 title: xftony's blog
 description: > # this means to ignore newlines until "Language & timezone"
   xftony's Blog
@@ -67,11 +67,9 @@ nav_lists:
     url: /about.html
 
 
-## => Post
-##############################
-## excerpt
-excerpt_separator:  <!--more-->
-excerpt_type: html # text (default), html
+
+
+
 
 ## TOC
 toc:
@@ -95,6 +93,10 @@ chart: # false (default), true
 paginate: 5
 paginate_path: /blog/page:num # don't change this unless for special need
 
+##############################
+## Post excerpts ##
+excerpt_separator: <!--more-->
+excerpt_type: html # text | html
 
 ## => Sources
 ##############################
