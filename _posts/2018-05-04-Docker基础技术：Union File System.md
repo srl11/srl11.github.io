@@ -18,7 +18,7 @@ PS： Dockerfile中只允许最后一个CMD或ENTRYPOINT生效，也与之对应
 <!--more-->  
 以ubuntu:15.04的image为例，其image结构示意图如下（截自docker docs）：  
  
-  ![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-04-Docker基础技术：Union-File-System-1.png)      
+  ![image结构示意图](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-04-Docker基础技术：Union-File-System-1.png)      
 
 当创建多台容器的时候，我们所有的写操作都是发生在R/W层，其FS结构示意图如下：
   ![多容器FS结构示意图](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-04-Docker基础技术：Union-File-System-2.png)   
