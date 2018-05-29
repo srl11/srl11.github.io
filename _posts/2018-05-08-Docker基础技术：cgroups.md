@@ -5,7 +5,7 @@ key: "Docker技术基础：cgroups"
 categories:
   - Docker
 tags:
-  - cgroups
+  - Cgroups
   - Docker
 ---
 [Github-blog](https://xftony.github.io/docker/2018/05/04/Docker基础技术-cgroups.html)     
