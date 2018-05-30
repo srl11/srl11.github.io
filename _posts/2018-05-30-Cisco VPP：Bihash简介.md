@@ -27,7 +27,7 @@ Bihash（Bounded-index extensible hash），个人认为其特点可大致概括
 ### Bihash的hash值计算    
 Bihash计算hash值时，对key进行hash。采用clib\_crc32c或者clib\_xxhash算法进行计算，x86中默认为clib\_crc32c。key长度为8的倍数，即为了尽量使用\_mm\_crc32\_u64函数，避免进一步使用\_mm\_crc32\_u32等，出现GCC bug，同时加快了计算效率。得到的hash值为64bit，其结构如下：
 
-![bihash-hash值](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/2018-05-30-bihash-hash结构.jpg)    
+![bihash-hash值](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-30-bihash-hash结构.jpg)    
 后log2\_nbuckets位用于表示所落buckets的index，中间log2_pages表示具体page的index，即bucket、page的双层hash。**注意**，当page级出现hash冲突的时候，该层可能被拉成线形。
 
 ### Bihash数据结构简介  
@@ -120,7 +120,7 @@ Bihash计算hash值时，对key进行hash。采用clib\_crc32c或者clib\_xxhash
 >针对每个bucket初始化缓存index序列(如果cache使能了) cache\_lru (0 1 2 3 4）  
 
 完成初始化后，其在内存中的情况如下图所示：  
-![bihash-init过程](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/2018-05-30-bihash-init过程.png)   
+![bihash-init过程](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-30-bihash-空桶add过程.png)   
 
 	void BV (clib_bihash_init)
 	  (BVT (clib_bihash) * h, char *name, u32 nbuckets, uword memory_size)
@@ -164,7 +164,7 @@ add/del过程我们以add和del，以及空桶和非空桶进行区别，分为�
 
 其内存对应的结构如图所示：
 
-![bihash-空桶add过程](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/2018-05-30-bihash-空桶add过程.png)   
+![bihash-空桶add过程](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-30-bihash-空桶add过程.png)   
 
 **空桶del**     
 >1、空桶，即bucket->offset 为0；  
@@ -187,7 +187,7 @@ b.需要扩展的情况：
 
 扩展情况下，其非空桶add过程，内存对应的结构如下图所示：
 
-![bihash-非空桶add过程](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/2018-05-30-bihash-非空桶add过程.png)   
+![bihash-非空桶add过程](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-30-bihash-非空桶add过程.png)   
 
 
 **非空桶del**   

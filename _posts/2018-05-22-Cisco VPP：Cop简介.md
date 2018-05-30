@@ -19,12 +19,12 @@ cop feature通过使用fib，实现数据包的依次匹配过滤功能。
 ### cop数据结构
 其主要的数据结构是`cop_main_t`，其详细分解可见下图：  
 
-![Cop数据结构](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/2018-05-22-Cop数据结构2.png)  
+![Cop数据结构](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-22-Cop数据结构2.png)  
  
 图中将存放在cop\_main\_t结构体中的数据层层分解了，如你所见，分解到`vnet_config_main_t *cm`是一系列的指针，其中最重要的是两个指针分别是`vnet_conf_t *config_pool` 和 `u32 *config_string_heap`。   
-![vnet_config_t数据结构](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/2018-05-22-Cop数据结构3.png)  
+![vnet_config_t数据结构](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-22-Cop数据结构3.png)  
  
-![config_string_heap结构](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/2018-05-22-Cop数据结构4.png)  
+![config_string_heap结构](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-22-Cop数据结构4.png)  
 `config_pool`是通过`pool_get`函数进行分配，是一组vector；`config_string_heap`是通过`heap_alloc`函数进行分配的内存，其内存放的是真正的配置数据（fib-id）。
 
 
@@ -77,7 +77,7 @@ CLI命令：`cop whitelist <interface-name> [ip4][ip6][default][fib-id <NN>][dis
       ccm->config_index_by_sw_if_index[a->sw_if_index] = ci;
 
 
-![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_image/2018-05-22-Cop核心函数1.png)
+![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-22-Cop核心函数1.png)
 
 
 ### cop使用示例     
