@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Docker技术基础：cgroups"
-key: "Docker技术基础：cgroups"
+title: "Docker技术基础：Cgroups"
+key: "Docker技术基础：Cgroups"
 categories:
   - Docker
 tags:
@@ -223,4 +223,5 @@ top中cpu各参数含义：
 	hi 硬件中断
 	si 软件中断 
 	st: 实时
- 
+
+以上～ 

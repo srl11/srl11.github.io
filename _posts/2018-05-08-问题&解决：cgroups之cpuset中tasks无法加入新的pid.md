@@ -5,7 +5,7 @@ key: 2018-05-08-2
 categories:
   - Docker
 tags:
-  - cgroups
+  - Cgroups
   - Docker
   - 问题&解决
 ---
@@ -44,4 +44,6 @@ Linux把物理内存划分为三个层次来管理
 
     echo 4847 > tasks 
 
+
+以上～
   

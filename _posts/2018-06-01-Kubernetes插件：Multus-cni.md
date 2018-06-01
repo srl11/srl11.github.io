@@ -7,13 +7,14 @@ categories:
 tags:
   - Kubernetes
 ---
-
+[Github-blog](https://xftony.github.io/all.html)     
+[CSDN](https://blog.csdn.net/xftony)  
 ### Multus-CNI简介 
 Multus-CNI是intel开发的一款应用于Kubernetes上的插件，可以作为其他CNI插件与k8s的中间件，使得kubernetes支持多个网络，实现网络冗余，为实现控制面与数据面分离提供支持。PS：multus-cni本身不提供网络配置功能，它是通过用其他满足CNI规范的插件进行container的网络配置，例如flannel/sriov等。  [Multus-CNI源码地址](https://github.com/intel/multus-cni)。
 
 <!--more-->
-其workflow如下图所示：  
-![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-06-01-Kubernets-Mutus-CNI-1.png)  
+其workflow如下图所示（[图片来源](https://github.com/intel/multus-cni)）：  
+![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-06-01-Kubernets-Mutus-CNI-1.jpg)  
 >1. `kubectl`调用RunPod()开始启动container;
 >2. setUpPod()调用网络配置插件(k8s的CNI);
 >3. 网络配置插件根据k8s配置(默认位于`/etc/cni/net.d/`下),调用Multus,进入Multus逻辑;
@@ -361,9 +362,9 @@ dpdk网卡信息查看的步骤如下（把对应目录挂进来，然后写个�
 	7d888af4d7da943a41ee063f0606ec0b558eb583de12a165a530e392992e751c-net0-4s0f1
 	
 	root@xftony:/var/lib/cni/sriov/4026533211# cat 7d888af4d7da943a41ee063f0606ec0b558eb583de12a165a530e392992e751c-Dpdk1-4s0f1 
-	{"type":"sriov","ipam":{},"dns":{},"DPDKMode":true,"Sharedvf":false,"dpdk":{"pci_addr":"0000:04:10.5","ifname":"Dpdk1-4s0f1","kernel_driver":"ixgbevf","dpdk_driver":"igb_uio","dpdk_tool":"/root/xftony/plugins/dpdk-17.11/usertools/dpdk-devbind.py","VFID":2},"cniDir":"/var/lib/cni/sriov","if0":"enp4s0f1","if0name":"Dpdk1-4s0f1","l2enable":false,"vlan":0,"pfOnly":false,"pci_addr":"0000:04:10.5"}root@ubuntu89:/var/lib/cni/sriov/4026533211# 
+	{"type":"sriov","ipam":{},"dns":{},"DPDKMode":true,"Sharedvf":false,"dpdk":{"pci_addr":"0000:04:10.5","ifname":"Dpdk1-4s0f1","kernel_driver":"ixgbevf","dpdk_driver":"igb_uio","dpdk_tool":"/root/xftony/plugins/dpdk-17.11/usertools/dpdk-devbind.py","VFID":2},"cniDir":"/var/lib/cni/sriov","if0":"enp4s0f1","if0name":"Dpdk1-4s0f1","l2enable":false,"vlan":0,"pfOnly":false,"pci_addr":"0000:04:10.5"}
 
-Intel写的白皮书(Enabling New Features with Kubernetes for NFV)里面有个图听适合这里的，不过，里面的`north0`和`south0`都是普通的sriov网卡，对应示例中的`net0-4s0f1`。所以我稍稍的P了一下，增加了dpdk的口。  
+Intel写的白皮书(Enabling New Features with Kubernetes for NFV)里面有个图挺直观的，不过，里面的`north0`和`south0`都是普通的sriov网卡，对应示例中的`net0-4s0f1`。所以我稍稍的P了一下，增加了dpdk的口。  
 ![image](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-06-01-Kubernets-Mutus-CNI-2.png)
 
 以上～

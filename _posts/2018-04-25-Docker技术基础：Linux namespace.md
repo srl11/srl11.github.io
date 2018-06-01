@@ -69,4 +69,5 @@ tags:
 
 在其他namespace的进程中打开`/proc/1000/ns/ipc`文件，并一直持有这个文件描述符不关闭，以后就可以用`setns`函数加入这个namespace。
 
+以上～
    

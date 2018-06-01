@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cisco VPP：cop简介"
+title: "Cisco VPP：Cop简介"
 key: 2018-05-22
 categories:
   - Vpp
@@ -117,3 +117,4 @@ cop具体配置过程如下：
 
 数据包先进入`cop-input`节点，然后进入`ip4-cop-whitelist`，进行fib 1000的匹配，匹配成功，`next index`是自身，再次进入`ip4-cop-whitelist`进行fib 1001的匹配，drop。
 
+以上～
