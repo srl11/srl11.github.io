@@ -10,7 +10,7 @@ tags:
 
 ### Service简介  
 Service定义了Pod的逻辑集合和访问该集合的策略，是真实服务的抽象。Service提供了一个统一的服务访问入口以及服务代理和发现机制，用户不需要了解后台Pod是如何运行。详细的[service介绍](https://kubernetes.io/docs/concepts/services-networking/service/)。本文仅讨论服务被调用的三种方式。
-
+<!--more-->
 ### Service调用方式  
 每一个服务都会有一个字段定义了该服务如何被调用（发现），这个字段的值可以为：
 
