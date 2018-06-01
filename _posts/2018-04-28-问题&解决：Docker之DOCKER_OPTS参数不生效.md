@@ -11,7 +11,7 @@ tags:
 ---
 
 
-[Github-blog](https://xftony.github.io/docker/2018/04/28/问题&解决-Docker之DOCKER_OPTS参数不生效.html)    
+[Github-blog](https://xftony.github.io/all.html)      
 [CSDN-blog](https://blog.csdn.net/xftony)
 
 ###  问题：DOCKER_OPTS参数不生效
@@ -53,6 +53,4 @@ tags:
 3、重启docker
  
     service docker restart
-
-[Github-blog](https://xftony.github.io/docker/2018/04/28/问题&解决-Docker之DOCKER_OPTS参数不生效.html)     
-[CSDN-blog](https://blog.csdn.net/xftony)
+  

@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Cisco VPP：bihash简介"
+title: "Cisco VPP：Bihash简介"
 key: 2018-05-30
 categories:
   - Vpp
 tags:
   - Vpp
 ---
-[Github-blog](https://xftony.github.io/docker/2018/05/04/Cisco-VPP-bihash简介.html)     
+[Github-blog](https://xftony.github.io/all.html)     
 [CSDN](https://blog.csdn.net/xftony)  
 
-注意：本文使用的代码是2018.05.07提交的master分支上的code，其具体commitID是`c22fcba177bad2c755fdb6d4d52f2a799eceaf34`。  
+**注意**：本文使用的代码是2018.05.07提交的master分支上的code，其具体commitID是`c22fcba177bad2c755fdb6d4d52f2a799eceaf34`。  
 
 ### Bihash简介   
 

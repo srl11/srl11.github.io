@@ -8,7 +8,7 @@ tags:
   - File System
   - Docker
 ---
-[Github-blog](https://xftony.github.io/docker/2018/05/04/Docker基础技术-Union-File-System.html)     
+[Github-blog](https://xftony.github.io/all.html)         
 [CSDN](https://blog.csdn.net/xftony)   
 
 ### Docker images and layers
@@ -194,5 +194,3 @@ OverlayFS中使用了两个目录，把一个目录置放于另一个之上，�
 待补。。。
 
 
-[Github-blog](https://xftony.github.io/docker/2018/05/04/Docker基础技术-Union-File-System.html)   
-[CSDN](https://blog.csdn.net/xftony)

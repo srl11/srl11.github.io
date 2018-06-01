@@ -8,7 +8,7 @@ tags:
   - Cgroups
   - Docker
 ---
-[Github-blog](https://xftony.github.io/docker/2018/05/04/Docker基础技术-cgroups.html)     
+[Github-blog](https://xftony.github.io/all.html)       
 [CSDN](https://blog.csdn.net/xftony)  
 
 ##  cgroups简介
@@ -223,6 +223,4 @@ top中cpu各参数含义：
 	hi 硬件中断
 	si 软件中断 
 	st: 实时
-
-[Github-blog](https://xftony.github.io/docker/2018/05/04/Docker基础技术-cgroups.html)     
-[CSDN](https://blog.csdn.net/xftony)  
+ 

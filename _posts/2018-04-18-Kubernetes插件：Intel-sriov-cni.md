@@ -1,14 +1,13 @@
 ---
 layout: post
-title: "Kubernetes插件：Intel sriov-cni插件简介/修改"
+title: "Kubernetes插件：Intel-SRIOV-CNI插件简介/修改"
 key: Docker安装示例
 categories:
   - Kubernetes
 tags:
   - Kubernetes
-  - Virtualization
 ---
-[github-blog](https://xftony.github.io)    
+[Github-blog](https://xftony.github.io/all.html)   
 [CSDN-blog](https://blog.csdn.net/xftony)  
 
 ### sriov-cni简介   
@@ -227,6 +226,5 @@ sriov实现了container中调用host VF的功能，在使用时也发现了一�
 针对上述的“问题”，我做了一个修改版的，亲测可用。  [自提](https://github.com/xftony/sriov-cni)    
 把这个`/bin/sriov`文件放到`/opt/cni/bin/`下即可
 
-
-[github-blog](https://xftony.github.io)  
-[CSDN-blog](https://blog.csdn.net/xftony)
+以上～
+ 

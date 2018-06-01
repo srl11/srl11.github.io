@@ -7,8 +7,10 @@ categories:
 tags:
   - Vpp
 ---
-[Github-blog](https://xftony.github.io/docker/2018/05/04/Cisco-VPP-cop简介.html)     
+[Github-blog](https://xftony.github.io/all.html)     
 [CSDN](https://blog.csdn.net/xftony)  
+
+**注意**：本文使用的代码是2018.05.07提交的master分支上的code，其具体commitID是`c22fcba177bad2c755fdb6d4d52f2a799eceaf34`。  
 
 ### cop功能简介  
 cop feature通过使用fib，实现数据包的依次匹配过滤功能。
@@ -115,6 +117,3 @@ cop具体配置过程如下：
 
 数据包先进入`cop-input`节点，然后进入`ip4-cop-whitelist`，进行fib 1000的匹配，匹配成功，`next index`是自身，再次进入`ip4-cop-whitelist`进行fib 1001的匹配，drop。
 
-
-[Github-blog](https://xftony.github.io/docker/2018/05/04/Cisco-VPP-cop简介.html)     
-[CSDN](https://blog.csdn.net/xftony)  

@@ -11,7 +11,7 @@ tags:
 ---
 
 
-[Github-blog](https://xftony.github.io/docker/2018/05/08/问题&解决-cgroups之cpuset中tasks无法加入新的pid.html)   
+[Github-blog](https://xftony.github.io/all.html)      
 [CSDN-blog](https://blog.csdn.net/xftony)
 
 ### 问题：cpuset中tasks无法加入新的pid    
@@ -44,6 +44,4 @@ Linux把物理内存划分为三个层次来管理
 
     echo 4847 > tasks 
 
-
-[Github-blog](https://xftony.github.io/docker/2018/05/08/问题&解决-cgroups之cpuset中tasks无法加入新的pid.html)  
-[CSDN-blog](https://blog.csdn.net/xftony)
+  
