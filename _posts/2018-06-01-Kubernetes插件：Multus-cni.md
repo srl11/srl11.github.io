@@ -9,6 +9,9 @@ tags:
 ---
 [Github-blog](https://xftony.github.io/all.html)     
 [CSDN](https://blog.csdn.net/xftony)  
+
+**注意**：本文使用的代码是2017.12.03提交的master分支上的code，其具体commitID是`7066439e38ce3e442699b40c4bbe3485a2409fd7`。
+
 ### Multus-CNI简介 
 Multus-CNI是intel开发的一款应用于Kubernetes上的插件，可以作为其他CNI插件与k8s的中间件，使得kubernetes支持多个网络，实现网络冗余，为实现控制面与数据面分离提供支持。PS：multus-cni本身不提供网络配置功能，它是通过用其他满足CNI规范的插件进行container的网络配置，例如flannel/sriov等。  [Multus-CNI源码地址](https://github.com/intel/multus-cni)。
 

@@ -8,6 +8,11 @@ tags:
   - Kubernetes
 ---
 
+**注意**：本文对应的k8s版本为`1.10.2`～
+
+    root@xftony:~# kubeadm version
+	kubeadm version: &version.Info{Major:"1", Minor:"10", GitVersion:"v1.10.2", GitCommit:"81753b10df112992bf51bbc2c2f85208aad78335", GitTreeState:"clean", BuildDate:"2018-04-27T09:10:24Z", GoVersion:"go1.9.3", Compiler:"gc", Platform:"linux/amd64"}
+
 ### Service简介  
 Service定义了Pod的逻辑集合和访问该集合的策略，是真实服务的抽象。Service提供了一个统一的服务访问入口以及服务代理和发现机制，用户不需要了解后台Pod是如何运行。详细的[service介绍](https://kubernetes.io/docs/concepts/services-networking/service/)。本文仅讨论服务被调用的三种方式。
 <!--more-->
