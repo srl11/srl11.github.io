@@ -38,6 +38,9 @@
       .douban {
         @include link-colors($text-color-1, $douban-color);
       }
+      .csdn {
+        @include link-colors($text-color-1, $csdn-color);
+      }
     }
   }
 }
