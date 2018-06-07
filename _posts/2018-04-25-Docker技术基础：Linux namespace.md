@@ -23,7 +23,7 @@ tags:
 	Mount       CLONE_NEWNS       Mount points (since Linux 2.4.19)
 	PID         CLONE_NEWPID      Process IDs (since Linux 2.6.24)
 	User        CLONE_NEWUSER     User and group IDs (started in Linux 2.6.23 and completed in Linux 3.8)
-	UTS         CLONE_NEWUTS      Hostname and NIS domain name (since Linux 2.6.19)
+	UTS         CLONE_NEWUTS      Hostname and NIS(Network Information Service) domain name (since Linux 2.6.19)
 
 ### namespace添加    
 创建一个命名空间的方法是使用clone()系统调用。其具体函数为`int clone(int(*child_func)(void *), void *child_stack, int flags, void*arg);`。在go语言中，可以通过调用syscall创建新的命名空间。 如下，该段代码为“sh”创建了一个UTS namespace和一个IPC namespace。PS：代码摘自[《自己动手写Docker》](https://book.douban.com/subject/27082348/)  
