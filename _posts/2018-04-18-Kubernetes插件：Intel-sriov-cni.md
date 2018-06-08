@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kubernetes插件：Intel-SRIOV-CNI插件简介/修改"
-key: Docker安装示例
+key: 2018-04-18-sriov
 categories:
   - Kubernetes
 tags:
