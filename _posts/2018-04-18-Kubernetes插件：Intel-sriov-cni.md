@@ -35,7 +35,7 @@ cmdAdd和cmdDel基本是一对反过程，所以这里就只简单介绍一下cm
 		if n.IF0NAME != "" {
 			args.IfName = n.IF0NAME
 		}
-	    // 核心函数，配置VF，将VF移动到container的命名空间
+		// 核心函数，配置VF，将VF移动到container的命名空间
 		if err = setupVF(n, n.IF0, args.IfName, args.ContainerID, netns); err != nil {
 			return fmt.Errorf("failed to set up pod interface %q from the device %q: %v", args.IfName, n.IF0, err)
 		}
@@ -73,7 +73,7 @@ cmdAdd和cmdDel基本是一对反过程，所以这里就只简单介绍一下cm
 		var vfIdx int
 		var infos []os.FileInfo
 		var pciAddr string
-	    //通过ifName获取if0，即m
+		//通过ifName获取if0，即m
 		m, err := netlink.LinkByName(ifName)
 		if err != nil {
 			return fmt.Errorf("failed to lookup master %q: %v", conf.IF0, err)
@@ -88,7 +88,7 @@ cmdAdd和cmdDel基本是一对反过程，所以这里就只简单介绍一下cm
 		if vfTotal <= 0 {
 			return fmt.Errorf("no virtual function in the device %q: %v", ifName)
 		}
-	    //遍历PF目录下的VF，找到一个满足条件的VF
+		//遍历PF目录下的VF，找到一个满足条件的VF
 		for vf := 0; vf <= (vfTotal - 1); vf++ {
 			vfDir := fmt.Sprintf("/sys/class/net/%s/device/virtfn%d/net", ifName, vf)
 			if _, err := os.Lstat(vfDir); err != nil {
@@ -117,7 +117,7 @@ cmdAdd和cmdDel基本是一对反过程，所以这里就只简单介绍一下cm
 	
 			if len(infos) <= maxSharedVf {
 				vfIdx = vf
-	            //获取PCI地址， host上“/sys/class/net/<if0>/device/<VF>”
+				//获取PCI地址， host上“/sys/class/net/<if0>/device/<VF>”
 				pciAddr, err = getpciaddress(ifName, vfIdx)
 				if err != nil {
 					return fmt.Errorf("err in getting pci address - %q", err)
@@ -148,17 +148,17 @@ cmdAdd和cmdDel基本是一对反过程，所以这里就只简单介绍一下cm
 				}
 			}
 		}
-	    //如果是dpdk模式，为DPDKConf结构体赋值，
+		//如果是dpdk模式，为DPDKConf结构体赋值，
 		if conf.DPDKMode != false {
 			conf.DPDKConf.PCIaddr = pciAddr
 			conf.DPDKConf.Ifname = podifName
 			conf.DPDKConf.VFID = vfIdx
-	        //配置文件以 containID-If0name 方式命名， 将其保存在conf.CNIDir目录下，即配置文件中cniDir，默认“/var/lib/cni/sriov”
+			//配置文件以 containID-If0name 方式命名， 将其保存在conf.CNIDir目录下，即配置文件中cniDir，默认“/var/lib/cni/sriov”
 	        //注意在k8s中这里的containID是pod中pod-container的id，而不是pod内真正执行服务的container的id。
 			if err = savedpdkConf(cid, conf.CNIDir, conf); err != nil {
 				return err
 			}
-	        //调用dpdk_tool脚本，更新VF驱动,划重点
+			//调用dpdk_tool脚本，更新VF驱动,划重点
 			return enabledpdkmode(&conf.DPDKConf, infos[0].Name(), true)
 		}
 	
@@ -173,7 +173,7 @@ cmdAdd和cmdDel基本是一对反过程，所以这里就只简单介绍一下cm
 			if err != nil {
 				return fmt.Errorf("failed to lookup vf device %q: %v", infos[i-1].Name(), err)
 			}
-	        //调用netlink库函数实现set link up， 类似`ip link set $link up`
+			//调用netlink库函数实现set link up， 类似`ip link set $link up`
 			if err = netlink.LinkSetUp(vfDev); err != nil {
 				return fmt.Errorf("failed to setup vf %d device: %v", vfIdx, err)
 			}
@@ -191,7 +191,7 @@ cmdAdd和cmdDel基本是一对反过程，所以这里就只简单介绍一下cm
 				if len(infos) == maxSharedVf && i == len(infos) {
 					ifName = podifName + fmt.Sprintf("d%d", i-1)
 				}
-	            //将该VF重命名为ifName
+				//将该VF重命名为ifName
 				err := renameLink(infos[i-1].Name(), ifName)
 				if err != nil {
 					return fmt.Errorf("failed to rename %d vf of the device %q to %q: %v", vfIdx, infos[i-1].Name(), ifName, err)
@@ -224,7 +224,7 @@ sriov实现了container中调用host VF的功能，在使用时也发现了一�
 >4、类似VF，添加setupPF（），实现与setupVF（）基本一致。  
 
 针对上述的“问题”，我做了一个修改版的，亲测可用。  [自提](https://github.com/xftony/sriov-cni)    
-把这个`/bin/sriov`文件放到`/opt/cni/bin/`下即可
+把这个`./bin/sriov`文件放到`/opt/cni/bin/`下即可
 
 以上～
  
