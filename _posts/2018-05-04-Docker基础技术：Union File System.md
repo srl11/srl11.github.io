@@ -16,7 +16,7 @@ tags:
 Docker的image是由一组layers组合起来得到的，每一层layer对应的是Dockerfile中的一条指令。这些layers中，一层layer为R/W layer，即 container layer，其他layers均为read-only layer（分析见[Union File System](#UFS)）。    
 PS： Dockerfile中只允许最后一个CMD或ENTRYPOINT生效，也与之对应，Dockerfile中其他命令生成的layer为Read-only的，CMD或ENTRYPOINT生成的layer是R/W的。  
 <!--more-->  
-以ubuntu:15.04的image为例，其image结构示意图如下（截自docker docs）：  
+以ubuntu:15.04的image为例，其image结构示意图如下（截自[docker docs](https://docs.docker.com/storage/storagedriver/)）：  
  
   ![image结构示意图](https://raw.githubusercontent.com/xftony/xftony.github.io/master/_images/2018-05-04-Docker基础技术：Union-File-System-1.png)      
 
